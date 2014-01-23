@@ -1,0 +1,84 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{864689AB-F471-4A08-AD4C-A125D5B9B3EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Searcharoo</RootNamespace>
+    <AssemblyName>Searcharoo</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Catalog.cs" />
+    <Compile Include="Common\CatalogBinder.cs" />
+    <Compile Include="Common\GoWords\IGoWord.cs" />
+    <Compile Include="Common\ResultFile.cs" />
+    <Compile Include="Common\StopWords\IStopper.cs" />
+    <Compile Include="Indexer\IgnoreDocument.cs" />
+    <Compile Include="Indexer\Document.cs" />
+    <Compile Include="Indexer\DocumentFactory.cs" />
+    <Compile Include="Indexer\FilterDocument.cs" />
+    <Compile Include="Indexer\TextDocument.cs" />
+    <Compile Include="Engine\Search.cs" />
+    <Compile Include="Common\File.cs" />
+    <Compile Include="Common\GoWords\GoWords.cs" />
+    <Compile Include="Indexer\HtmlDocument.cs" />
+    <Compile Include="Indexer\ProgressEventArgs.cs" />
+    <Compile Include="Common\Kelvin.cs" />
+    <Compile Include="Common\Preferences.cs" />
+    <Compile Include="Indexer\RobotsTxt.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Indexer\Spider.cs" />
+    <Compile Include="Common\Stemming\IStemming.cs" />
+    <Compile Include="Common\Stemming\NoStemming.cs" />
+    <Compile Include="Common\Stemming\PorterStemmer.cs" />
+    <Compile Include="Common\StopWords\StopWords.cs" />
+    <Compile Include="Common\Word.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EPocalipse.IFilter\EPocalipse.IFilter.csproj">
+      <Project>{400462CE-40B3-498F-B95A-B1D2AE679359}</Project>
+      <Name>EPocalipse.IFilter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IndexerDiagram.cd" />
+    <None Include="AllDiagram.cd" />
+    <None Include="SearchEngineDiagram.cd" />
+    <None Include="SpiderDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

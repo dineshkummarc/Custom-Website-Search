@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html dir="LTR" xmlns:ndoc="urn:ndoc-schema"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="history" name="save" /><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" /><title>HitQueue Members</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css" /></head><body id="bodyID" class="dtBODY"><script type="text/javascript">
+    	window.onload = function() {
+	    	var i = window.frames["iframe_navi"];
+	    	i.syncTree(document.URL);
+    	}
+    </script><div id="navi"><iframe src="contents.html" id="iframe_navi" name="iframe_navi"></iframe></div><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Lucene.Net</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">HitQueue Members
+					</h1></div></div><div id="nstext"><p><a href="Lucene.Net.Search.HitQueue.html">HitQueue overview</a></p><h4 class="dtH4">Public Instance Constructors</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr VALIGN="top"><td width="50%"><img src="pubmethod.gif" /><a href="Lucene.Net.Search.HitQueue.~ctor.html">HitQueue Constructor</a></td><td width="50%"> Creates a new instance with <code>size</code> elements. If <code>prePopulate</code> is set to true, the queue will pre-populate itself with sentinel objects and set its <a href="Lucene.Net.Util.PriorityQueue$1.Size.html">Size</a> to <code>size</code>. In that case, you should not rely on <b>Size</b> to get the number of actual elements that were added to the queue, but keep track yourself.<br /><b xmlns="urn:ndoc-schema">NOTE:</b> in case <code>prePopulate</code> is true, you should pop elements from the queue using the following code example: <pre class="code">PriorityQueue pq = new HitQueue(10, true); // pre-populate.
+ScoreDoc top = pq.top();
+
+// Add/Update one element.
+top.score = 1.0f;
+top.doc = 0;
+top = (ScoreDoc) pq.updateTop();
+int totalHits = 1;
+
+// Now pop only the elements that were *truly* inserted.
+// First, pop all the sentinel elements (there are pq.size() - totalHits).
+for (int i = pq.size() - totalHits; i &gt; 0; i--) pq.pop();
+
+// Now pop the truly added elements.
+ScoreDoc[] results = new ScoreDoc[totalHits];
+for (int i = totalHits - 1; i &gt;= 0; i--) {
+results[i] = (ScoreDoc) pq.pop();
+}
+</pre><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE</b>: This class pre-allocate a full array of length <code>size</code>. </td></tr></table></div><h4 class="dtH4">Public Instance Methods</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.html">Add</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.Clear.html">Clear</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%">Removes all entries from the PriorityQueue. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.Equals(VS.100).aspx">Equals</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.GetHashCode(VS.100).aspx">GetHashCode</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.GetType(VS.100).aspx">GetType</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.html">InsertWithOverflow</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Search.HitQueue.LessThan.html">LessThan</a></td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.Pop.html">Pop</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%"> Removes and returns the least element of the PriorityQueue in log(size) time. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.Size.html">Size</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%">Returns the number of elements currently stored in the PriorityQueue. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.Top.html">Top</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%">Returns the least element of the PriorityQueue in constant time. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.ToString(VS.100).aspx">ToString</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.UpdateTop.html">UpdateTop</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%"> Should be called when the Object at top changes values. Still log(n) worst case, but it's at least twice as fast to <pre class="code">pq.top().change();
+pq.updateTop();
+</pre> instead of <pre class="code">o = pq.pop();
+o.change();
+pq.push(o);
+</pre></td></tr></table></div><h4 class="dtH4">Protected Instance Fields</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="protfield.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.heap.html">heap</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%"></td></tr></table></div><h4 class="dtH4">Protected Instance Properties</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="protproperty.gif"></img><a href="Lucene.Net.Search.HitQueue.SentinelObject1.html">SentinelObject</a></td><td width="50%">Overloaded. </td></tr></table></div><h4 class="dtH4">Protected Instance Methods</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="protmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.Finalize(VS.100).aspx">Finalize</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="protmethod.gif"></img><a href="Lucene.Net.Util.PriorityQueue$1.Initialize.html">Initialize</a> (inherited from <b>PriorityQueue</b>)</td><td width="50%">Subclass constructors must call this. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="protmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.MemberwiseClone(VS.100).aspx">MemberwiseClone</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr></table></div><h4 class="dtH4">See Also</h4><p><a href="Lucene.Net.Search.HitQueue.html">HitQueue Class</a> | <a href="Lucene.Net.Search.html">Lucene.Net.Search Namespace</a></p><hr /><div id="footer"><p></p><p>Version: 3.0.3.0</p></div></div></body></html>

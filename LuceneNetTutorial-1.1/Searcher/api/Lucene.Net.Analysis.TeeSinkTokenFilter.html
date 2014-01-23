@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html dir="LTR" xmlns:ndoc="urn:ndoc-schema"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="history" name="save" /><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" /><title>TeeSinkTokenFilter Class</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css" /></head><body id="bodyID" class="dtBODY"><script type="text/javascript">
+    	window.onload = function() {
+	    	var i = window.frames["iframe_navi"];
+	    	i.syncTree(document.URL);
+    	}
+    </script><div id="navi"><iframe src="contents.html" id="iframe_navi" name="iframe_navi"></iframe></div><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Lucene.Net</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">TeeSinkTokenFilter Class</h1></div></div><div id="nstext"> This TokenFilter provides the ability to set aside attribute states that have already been analyzed. This is useful in situations where multiple fields share many common analysis steps and then go their separate ways. <p xmlns="urn:ndoc-schema"></p> It is also useful for doing things like entity extraction or proper noun analysis as part of the analysis workflow and saving off those tokens for use in another field. <pre class="code">TeeSinkTokenFilter source1 = new TeeSinkTokenFilter(new WhitespaceTokenizer(reader1));
+TeeSinkTokenFilter.SinkTokenStream sink1 = source1.newSinkTokenStream();
+TeeSinkTokenFilter.SinkTokenStream sink2 = source1.newSinkTokenStream();
+TeeSinkTokenFilter source2 = new TeeSinkTokenFilter(new WhitespaceTokenizer(reader2));
+source2.addSinkTokenStream(sink1);
+source2.addSinkTokenStream(sink2);
+TokenStream final1 = new LowerCaseFilter(source1);
+TokenStream final2 = source2;
+TokenStream final3 = new EntityDetect(sink1);
+TokenStream final4 = new URLDetect(sink2);
+d.add(new Field("f1", final1));
+d.add(new Field("f2", final2));
+d.add(new Field("f3", final3));
+d.add(new Field("f4", final4));
+</pre> In this example, <code>sink1</code> and <code>sink2</code> will both get tokens from both <code>reader1</code> and <code>reader2</code> after whitespace tokenizer and now we can further wrap any of these in extra analysis, and more "sources" can be inserted if desired. It is important, that tees are consumed before sinks (in the above example, the field names must be less the sink's field names). If you are not sure, which stream is consumed first, you can simply add another sink and then pass all tokens to the sinks at once using <a href="Lucene.Net.Analysis.TeeSinkTokenFilter.ConsumeAllTokens.html">ConsumeAllTokens</a>. This TokenFilter is exhausted after this. In the above example, change the example above to: <pre class="code">...
+TokenStream final1 = new LowerCaseFilter(source1.newSinkTokenStream());
+TokenStream final2 = source2.newSinkTokenStream();
+sink1.consumeAllTokens();
+sink2.consumeAllTokens();
+...
+</pre> In this case, the fields can be added in any order, because the sources are not used anymore and all sinks are ready. <p xmlns="urn:ndoc-schema"></p>Note, the EntityDetect and URLDetect TokenStreams are for the example and do not currently exist in Lucene. <p>
+                For a list of all members of this type, see <a href="Lucene.Net.Analysis.TeeSinkTokenFilter~Members.html">TeeSinkTokenFilter Members
+                </a>.
+              </p><p><a href="http://msdn.microsoft.com/en-us/library/System.Object(VS.100).aspx">System.Object</a><br />   <a href="Lucene.Net.Util.AttributeSource.html">AttributeSource</a><br />      <a href="Lucene.Net.Analysis.TokenStream.html">TokenStream</a><br />         <a href="Lucene.Net.Analysis.TokenFilter.html">TokenFilter</a><br />            <b>TeeSinkTokenFilter</b></p><div class="syntax"><div>public sealed class TeeSinkTokenFilter<b> : <a href="Lucene.Net.Analysis.TokenFilter.html">TokenFilter</a></b></div></div><H4 class="dtH4">Thread Safety</H4><P>
+					Public static (<b>Shared</b> in Visual Basic) members of this type are
+					safe for multithreaded operations. Instance members are <b>not</b> guaranteed to be
+					thread-safe.
+				</P><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Lucene.Net.Analysis.html">Lucene.Net.Analysis</a></p><p><b>Assembly: </b>Lucene.Net (in Lucene.Net.dll)
+          </p><h4 class="dtH4">See Also</h4><p><a href="Lucene.Net.Analysis.TeeSinkTokenFilter~Members.html">TeeSinkTokenFilter Members</a> | <a href="Lucene.Net.Analysis.html">Lucene.Net.Analysis Namespace</a></p><hr /><div id="footer"><p></p><p>Version: 3.0.3.0</p></div></div></body></html>

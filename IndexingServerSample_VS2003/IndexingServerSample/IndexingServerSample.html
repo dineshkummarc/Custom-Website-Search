@@ -1,0 +1,233 @@
+﻿<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="HelpStyleSheet.css">
+<TABLE CLASS="AsemblyTable" CELLPADDING="2" CELLSPACING="0">
+  <TR CLASS="AssemblyHeader">
+    <TD COLSPAN="3">Assembly <FONT CLASS="Title">IndexingServerSample</FONT>
+    </TD>
+  </TR>
+  <TR CLASS="AssemblyBody">
+    <TD>  </TD>
+    <TD>
+      <TABLE CLASS="TypeTable" CELLPADDING="2" CELLSPACING="0">
+        <TR CLASS="TypeHeader">
+          <TD COLSPAN="2">Type <FONT CLASS="Title">Properties.Resources</FONT> - 
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Property </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">ResourceManager</FONT>
+                                - 
+              Returns the cached ResourceManager instance used by this class.
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Property </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">Culture</FONT>
+                                - 
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD>  </TD>
+  </TR>
+  <TR CLASS="AssemblyBody">
+    <TD>  </TD>
+    <TD>
+      <TABLE CLASS="TypeTable" CELLPADDING="2" CELLSPACING="0">
+        <TR CLASS="TypeHeader">
+          <TD COLSPAN="2">Type <FONT CLASS="Title">IndexingServerManager</FONT> - 
+            helper methods to perform local and remote Indexing Server catalog queries
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Field </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">components</FONT>
+                                - 
+            Required designer variable.
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">Dispose()</FONT>
+                                - 
+            Clean up any resources being used.
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">disposing</FONT> - true if managed resources should be disposed; otherwise, false.</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">InitializeComponent()</FONT>
+                                - 
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Constructor </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">IndexingServerManager()</FONT>
+                                - 
+            initialization
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">ShowQueryResults()</FONT>
+                                - 
+            refreshes the ListView with the latest query result
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">DataReader</FONT> - the query result</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">ExecuteLocalButton_Click()</FONT>
+                                - 
+            execute the local query and show the result set
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">sender</FONT> - event sender</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">e</FONT> - event arguments</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">ExecuteRemoteButton_Click()</FONT>
+                                - 
+            execute the remote query and show the result set
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">sender</FONT> - event sender</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">e</FONT> - event arguments</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">CloseButton_Click()</FONT>
+                                - 
+            closes the form
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">sender</FONT> - event sender</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">e</FONT> - event arguments</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">IndexingServerManager_Load()</FONT>
+                                - 
+            prefill the machine name with the local machine name
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">sender</FONT> - event sender</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">e</FONT> - event arguments</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">ShowUrl()</FONT>
+                                - 
+            launch a URL in the browser to show the MSDN help
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">HelpUrl</FONT> - the help URL to use</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">MsdnHelpButton_Click()</FONT>
+                                - 
+            show the MSDN help topic
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">sender</FONT> - event sender</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">e</FONT> - event arguments</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD>  </TD>
+  </TR>
+</TABLE>

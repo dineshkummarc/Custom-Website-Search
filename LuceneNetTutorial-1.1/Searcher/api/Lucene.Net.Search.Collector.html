@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html dir="LTR" xmlns:ndoc="urn:ndoc-schema"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="history" name="save" /><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" /><title>Collector Class</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css" /></head><body id="bodyID" class="dtBODY"><script type="text/javascript">
+    	window.onload = function() {
+	    	var i = window.frames["iframe_navi"];
+	    	i.syncTree(document.URL);
+    	}
+    </script><div id="navi"><iframe src="contents.html" id="iframe_navi" name="iframe_navi"></iframe></div><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Lucene.Net</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">Collector Class</h1></div></div><div id="nstext"><p xmlns="urn:ndoc-schema"></p>Expert: Collectors are primarily meant to be used to gather raw results from a search, and implement sorting or custom result filtering, collation, etc. <p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p>Lucene's core collectors are derived from Collector. Likely your application can use one of these classes, or subclass <a href="Lucene.Net.Search.TopDocsCollector$1.html">TopDocsCollector(T)</a>, instead of implementing Collector directly: <ul type="disc"><li><b>TopDocsCollector(T)</b> is an abstract base class that assumes you will retrieve the top N docs, according to some criteria, after collection is done. </li><li><a href="Lucene.Net.Search.TopScoreDocCollector.html">TopScoreDocCollector</a> is a concrete subclass <b>TopDocsCollector(T)</b> and sorts according to score + docID. This is used internally by the <a href="Lucene.Net.Search.IndexSearcher.html">IndexSearcher</a> search methods that do not take an explicit <a href="Lucene.Net.Search.Sort.html">Sort</a>. It is likely the most frequently used collector.</li><li><a href="Lucene.Net.Search.TopFieldCollector.html">TopFieldCollector</a> subclasses <b>TopDocsCollector(T)</b> and sorts according to a specified <b>Sort</b> object (sort by field). This is used internally by the <b>IndexSearcher</b> search methods that take an explicit <b>Sort</b>.</li><li><a href="Lucene.Net.Search.TimeLimitingCollector.html">TimeLimitingCollector</a>, which wraps any other Collector and aborts the search if it's taken too much time.</li><li><a href="Lucene.Net.Search.PositiveScoresOnlyCollector.html">PositiveScoresOnlyCollector</a> wraps any other Collector and prevents collection of hits whose score is &lt;= 0.0</li></ul><p xmlns="urn:ndoc-schema"></p>Collector decouples the score from the collected doc: the score computation is skipped entirely if it's not needed. Collectors that do need the score should implement the <a href="Lucene.Net.Search.Collector.SetScorer.html">SetScorer</a> method, to hold onto the passed <a href="Lucene.Net.Search.Scorer.html">Scorer</a> instance, and call <a href="Lucene.Net.Search.Scorer.Score3.html">Score</a> within the collect method to compute the current hit's score. If your collector may request the score for a single hit multiple times, you should use <a href="Lucene.Net.Search.ScoreCachingWrappingScorer.html">ScoreCachingWrappingScorer</a>. <p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE:</b> The doc that is passed to the collect method is relative to the current reader. If your collector needs to resolve this to the docID space of the Multi*Reader, you must re-base it by recording the docBase from the most recent setNextReader call. Here's a simple example showing how to collect docIDs into a BitSet:<p xmlns="urn:ndoc-schema"></p><pre class="code">Searcher searcher = new IndexSearcher(indexReader);
+final BitSet bits = new BitSet(indexReader.MaxDoc);
+searcher.search(query, new Collector() {
+private int docBase;
+
+<em xmlns="urn:ndoc-schema">// ignore scorer</em>
+public void setScorer(Scorer scorer) {
+}
+
+<em xmlns="urn:ndoc-schema">// accept docs out of order (for a BitSet it doesn't matter)</em>
+public boolean acceptsDocsOutOfOrder() {
+return true;
+}
+
+public void collect(int doc) {
+bits.set(doc + docBase);
+}
+
+public void setNextReader(IndexReader reader, int docBase) {
+this.docBase = docBase;
+}
+});
+</pre><p xmlns="urn:ndoc-schema"></p>Not all collectors will need to rebase the docID. For example, a collector that simply counts the total number of hits would skip it.<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE:</b> Prior to 2.9, Lucene silently filtered out hits with score &lt;= 0. As of 2.9, the core Collectors no longer do that. It's very unusual to have such hits (a negative query boost, or function query returning negative custom scores, could cause it to happen). If you need that behavior, use <b>PositiveScoresOnlyCollector</b> .<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE:</b> This API is experimental and might change in incompatible ways in the next release.<p xmlns="urn:ndoc-schema"></p><p>
+                For a list of all members of this type, see <a href="Lucene.Net.Search.Collector~Members.html">Collector Members
+                </a>.
+              </p><p><a href="http://msdn.microsoft.com/en-us/library/System.Object(VS.100).aspx">System.Object</a><br />   <b>Collector</b><br />      <a href="Lucene.Net.Search.PositiveScoresOnlyCollector.html">PositiveScoresOnlyCollector</a><br />      <a href="Lucene.Net.Search.TimeLimitingCollector.html">TimeLimitingCollector</a><br />      <a href="Lucene.Net.Search.TopDocsCollector$1.html">TopDocsCollector(T)</a></p><div class="syntax"><div>public abstract class Collector</div></div><H4 class="dtH4">Thread Safety</H4><P>
+					Public static (<b>Shared</b> in Visual Basic) members of this type are
+					safe for multithreaded operations. Instance members are <b>not</b> guaranteed to be
+					thread-safe.
+				</P><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Lucene.Net.Search.html">Lucene.Net.Search</a></p><p><b>Assembly: </b>Lucene.Net (in Lucene.Net.dll)
+          </p><h4 class="dtH4">See Also</h4><p><a href="Lucene.Net.Search.Collector~Members.html">Collector Members</a> | <a href="Lucene.Net.Search.html">Lucene.Net.Search Namespace</a></p><hr /><div id="footer"><p></p><p>Version: 3.0.3.0</p></div></div></body></html>

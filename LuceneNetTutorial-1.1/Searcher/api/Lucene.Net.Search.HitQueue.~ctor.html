@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html dir="LTR" xmlns:ndoc="urn:ndoc-schema"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="history" name="save" /><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" /><title>HitQueue Constructor</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css" /></head><body id="bodyID" class="dtBODY"><script type="text/javascript">
+    	window.onload = function() {
+	    	var i = window.frames["iframe_navi"];
+	    	i.syncTree(document.URL);
+    	}
+    </script><div id="navi"><iframe src="contents.html" id="iframe_navi" name="iframe_navi"></iframe></div><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Lucene.Net</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">HitQueue Constructor</h1></div></div><div id="nstext"> Creates a new instance with <code>size</code> elements. If <code>prePopulate</code> is set to true, the queue will pre-populate itself with sentinel objects and set its <a href="Lucene.Net.Util.PriorityQueue$1.Size.html">Size</a> to <code>size</code>. In that case, you should not rely on <b>Size</b> to get the number of actual elements that were added to the queue, but keep track yourself.<br /><b xmlns="urn:ndoc-schema">NOTE:</b> in case <code>prePopulate</code> is true, you should pop elements from the queue using the following code example: <pre class="code">PriorityQueue pq = new HitQueue(10, true); // pre-populate.
+ScoreDoc top = pq.top();
+
+// Add/Update one element.
+top.score = 1.0f;
+top.doc = 0;
+top = (ScoreDoc) pq.updateTop();
+int totalHits = 1;
+
+// Now pop only the elements that were *truly* inserted.
+// First, pop all the sentinel elements (there are pq.size() - totalHits).
+for (int i = pq.size() - totalHits; i &gt; 0; i--) pq.pop();
+
+// Now pop the truly added elements.
+ScoreDoc[] results = new ScoreDoc[totalHits];
+for (int i = totalHits - 1; i &gt;= 0; i--) {
+results[i] = (ScoreDoc) pq.pop();
+}
+</pre><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE</b>: This class pre-allocate a full array of length <code>size</code>. <div class="syntax"><a href="Lucene.Net.Search.HitQueue.html">HitQueue</a>(<br />   <a href="">int</a> <i>size</i>,<br />   <a href="">bool</a> <i>prePopulate</i><br />);</div><h4 class="dtH4">Parameters</h4><dl><dt><i>size</i></dt><dd>the requested size of this queue. </dd><dt><i>prePopulate</i></dt><dd>specifies whether to pre-populate the queue with sentinel values. </dd></dl><h4 class="dtH4">See Also</h4><p><a href="Lucene.Net.Search.HitQueue.html">HitQueue Class</a> | <a href="Lucene.Net.Search.html">Lucene.Net.Search Namespace</a> | <a href="Lucene.Net.Search.HitQueue.SentinelObject1.html">SentinelObject</a></p><hr /><div id="footer"><p></p><p>Version: 3.0.3.0</p></div></div></body></html>

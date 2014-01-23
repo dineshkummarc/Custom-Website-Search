@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html dir="LTR" xmlns:ndoc="urn:ndoc-schema"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta content="history" name="save" /><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" /><title>NumericTokenStream Class</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css" /></head><body id="bodyID" class="dtBODY"><script type="text/javascript">
+    	window.onload = function() {
+	    	var i = window.frames["iframe_navi"];
+	    	i.syncTree(document.URL);
+    	}
+    </script><div id="navi"><iframe src="contents.html" id="iframe_navi" name="iframe_navi"></iframe></div><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Lucene.Net</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">NumericTokenStream Class</h1></div></div><div id="nstext"><b xmlns="urn:ndoc-schema">Expert:</b> This class provides a <a href="Lucene.Net.Analysis.TokenStream.html">TokenStream</a> for indexing numeric values that can be used by <a href="Lucene.Net.Search.NumericRangeQuery$1.html">NumericRangeQuery(T)</a> or <a href="Lucene.Net.Search.NumericRangeFilter$1.html">NumericRangeFilter(T)</a>. <p xmlns="urn:ndoc-schema"></p>Note that for simple usage, <a href="Lucene.Net.Documents.NumericField.html">NumericField</a> is recommended. <b>NumericField</b> disables norms and term freqs, as they are not usually needed during searching. If you need to change these settings, you should use this class. <p xmlns="urn:ndoc-schema"></p>See <b>NumericField</b> for capabilities of fields indexed numerically.<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p>Here's an example usage, for an <code>int</code> field: <pre class="code"> Field field = new Field(name, new NumericTokenStream(precisionStep).setIntValue(value));
+ field.setOmitNorms(true);
+ field.setOmitTermFreqAndPositions(true);
+ document.add(field);
+</pre><p xmlns="urn:ndoc-schema"></p>For optimal performance, re-use the TokenStream and Field instance for more than one document: <pre class="code"> NumericTokenStream stream = new NumericTokenStream(precisionStep);
+ Field field = new Field(name, stream);
+ field.setOmitNorms(true);
+ field.setOmitTermFreqAndPositions(true);
+ Document document = new Document();
+ document.add(field);
+
+ for(all documents) {
+   stream.setIntValue(value)
+   writer.addDocument(document);
+ }
+</pre><p xmlns="urn:ndoc-schema"></p>This stream is not intended to be used in analyzers; it's more for iterating the different precisions during indexing a specific numeric value.<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p><b xmlns="urn:ndoc-schema">NOTE</b>: as token streams are only consumed once the document is added to the index, if you index more than one numeric field, use a separate <code>NumericTokenStream</code> instance for each.<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p>See <b>NumericRangeQuery(T)</b> for more details on the <a href="../search/NumericRangeQuery.html#precisionStepDesc" xmlns="urn:ndoc-schema"><code xmlns="">precisionStep</code></a> parameter as well as how numeric fields work under the hood.<p xmlns="urn:ndoc-schema"></p><p xmlns="urn:ndoc-schema"></p><font color="red" xmlns="urn:ndoc-schema"><b>NOTE:</b> This API is experimental and might change in incompatible ways in the next release.</font> Since 2.9 <p>
+                For a list of all members of this type, see <a href="Lucene.Net.Analysis.NumericTokenStream~Members.html">NumericTokenStream Members
+                </a>.
+              </p><p><a href="http://msdn.microsoft.com/en-us/library/System.Object(VS.100).aspx">System.Object</a><br />   <a href="Lucene.Net.Util.AttributeSource.html">AttributeSource</a><br />      <a href="Lucene.Net.Analysis.TokenStream.html">TokenStream</a><br />         <b>NumericTokenStream</b></p><div class="syntax"><div>public sealed class NumericTokenStream<b> : <a href="Lucene.Net.Analysis.TokenStream.html">TokenStream</a></b></div></div><H4 class="dtH4">Thread Safety</H4><P>
+					Public static (<b>Shared</b> in Visual Basic) members of this type are
+					safe for multithreaded operations. Instance members are <b>not</b> guaranteed to be
+					thread-safe.
+				</P><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Lucene.Net.Analysis.html">Lucene.Net.Analysis</a></p><p><b>Assembly: </b>Lucene.Net (in Lucene.Net.dll)
+          </p><h4 class="dtH4">See Also</h4><p><a href="Lucene.Net.Analysis.NumericTokenStream~Members.html">NumericTokenStream Members</a> | <a href="Lucene.Net.Analysis.html">Lucene.Net.Analysis Namespace</a></p><hr /><div id="footer"><p></p><p>Version: 3.0.3.0</p></div></div></body></html>

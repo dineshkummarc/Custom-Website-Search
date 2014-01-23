@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexingServerSample", "IndexingServerSample\IndexingServerSample.csproj", "{B1D08F89-5044-4A3F-BB8B-4290D74FF3CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogQueryManager", "CatalogQueryManager\CatalogQueryManager.csproj", "{B57487FB-C8AB-4B96-8ED0-4E7DB47C8889}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1D08F89-5044-4A3F-BB8B-4290D74FF3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D08F89-5044-4A3F-BB8B-4290D74FF3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D08F89-5044-4A3F-BB8B-4290D74FF3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D08F89-5044-4A3F-BB8B-4290D74FF3CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B57487FB-C8AB-4B96-8ED0-4E7DB47C8889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57487FB-C8AB-4B96-8ED0-4E7DB47C8889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57487FB-C8AB-4B96-8ED0-4E7DB47C8889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57487FB-C8AB-4B96-8ED0-4E7DB47C8889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

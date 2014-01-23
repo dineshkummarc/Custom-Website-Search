@@ -1,0 +1,107 @@
+﻿<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="HelpStyleSheet.css">
+<TABLE CLASS="AsemblyTable" CELLPADDING="2" CELLSPACING="0">
+  <TR CLASS="AssemblyHeader">
+    <TD COLSPAN="3">Assembly <FONT CLASS="Title">CatalogQueryManager</FONT>
+    </TD>
+  </TR>
+  <TR CLASS="AssemblyBody">
+    <TD>  </TD>
+    <TD>
+      <TABLE CLASS="TypeTable" CELLPADDING="2" CELLSPACING="0">
+        <TR CLASS="TypeHeader">
+          <TD COLSPAN="2">Type <FONT CLASS="Title">CatalogQuery</FONT> - 
+            class which can be used to query a Indexing Server Catalog
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Constructor </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">CatalogQuery()</FONT>
+                                - 
+            makes sure no instance of this class can be created
+            </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">LocalQuery()</FONT>
+                                - 
+            query a local indexing catalog and return the resultset as a data reader
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">CatalogName</FONT> - the catalog to query</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">QueryString</FONT> - the query to execute</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">Return value</FONT> - return the data reader with the resultset</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">RemoteQuery()</FONT>
+                                - 
+            query a remote indexing catalog and return the resultset as a data reader
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">RemoteMachineName</FONT> - remote machine where indexing server resides</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">CatalogName</FONT> - the catalog to query</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">QueryString</FONT> - the query to execute</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">Return value</FONT> - return the data reader with the resultset</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+        <TR CLASS="TypeBody">
+          <TD nowrap>
+            <FONT CLASS="Text">Method </FONT>
+          </TD>
+          <TD WIDTH="100%">
+            <FONT CLASS="Member">Query()</FONT>
+                                - 
+            query a indexing catalog (conenction string determines if local or remote) and return
+            the resultset as a data reader
+            <BR><TABLE CLASS="ParamTable" CELLPADDING="2" CELLSPACING="0">
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">ConnectionString</FONT> - the indexing catalog connection string to use</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">QueryString</FONT> - the query to execute</TD>
+              </TR>
+              <TR CLASS="ParamBody">
+                <TD WIDTH="100%">
+                  <FONT CLASS="Param">Return value</FONT> - return the data reader with the resultset</TD>
+              </TR>
+            </TABLE>
+          </TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD>  </TD>
+  </TR>
+</TABLE>
